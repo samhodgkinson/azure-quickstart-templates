@@ -13,25 +13,18 @@
       "metadata": {
         "description": "Type of the public IP address, static or dynamic"
       }
-    },
-    "location": {
-      "type": "string",
-      "metadata": {
-        "description": "Location where the template should be deployed."
-      }
-    },
+    }
   },
   "variables": {
     "apiVerion": "2015-06-15",
     "apiVerionRm": "2015-01-01"
   },
   "resources": [
-
     {
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[parameters('publicIpName')]",
       "apiVersion": "[variables('apiVerion')]",
-      "location": "[parameters('location')]",
+      "location": "[resourceGroup().location]",
       "properties": {
         "publicIPAllocationMethod": "[parameters('publicIPAddressType')]"
       }

@@ -135,7 +135,7 @@
       }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-04-30-preview",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[variables('vmName')]",
       "location": "[resourceGroup().location]",
@@ -161,11 +161,6 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "osdisk",
-            "vhd": {
-              "uri": "[concat('http://',variables('storageAccountName'),'.blob.core.windows.net/vhds/','osdisk.vhd')]"
-            },
-            "caching": "ReadWrite",
             "createOption": "FromImage"
           }
         },
@@ -179,7 +174,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
-            "storageUri": "[concat('http://', variables('storageAccountName'),'.blob.core.windows.net')]"
+            "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), variables('apiVersion')).primaryEndpoints.blob)]"
           }
         }
       }

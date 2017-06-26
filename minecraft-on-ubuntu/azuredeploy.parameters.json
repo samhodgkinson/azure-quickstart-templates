@@ -14,8 +14,8 @@
     "dnsNameForPublicIP": {
       "value": "uniquednsname"
     },
-    "minecraftServerVersion": {
-      "value": "1.9"
+    "virtualMachineSize": {
+      "value": "Standard_A1"
     },
     "difficulty": {
       "value": "1"
